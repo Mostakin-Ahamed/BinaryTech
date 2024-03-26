@@ -2,7 +2,7 @@
 
 const HomePage = () => {
   return (
-    <div>
+    <div className="max-h-[700px]">
        <h1>This is home page</h1>
        
     </div>
