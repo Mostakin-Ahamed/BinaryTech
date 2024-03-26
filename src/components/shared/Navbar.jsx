@@ -8,7 +8,7 @@ import React from 'react';
 const Navbar = () => {
 
   return (
-    <div>
+    <div className='border-b-2 border-black'>
       <div className="navbar  bg-blue-700">
         <div className="flex-auto w-2/3 mx-auto ">
           <div className='w-1/2 mx-auto  flex justify-start items-center'>
