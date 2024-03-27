@@ -11,53 +11,54 @@ import Image from "next/image";
 import image1 from "@/assets/registration.jpg"
 import Link from "next/link";
 import image2 from "@/assets/google.svg"
+import { useContext } from "react";
+import { AuthContext } from "@/Provider/AuthProvider";
 
 
 const Register = () => {
 
 
-    // const { googleRegister } = useContext(AuthContext);
-    // const location = useLocation();
-    // const navigate = useNavigate();
+    const { googleRegister } = useContext(AuthContext);
+    
     
 
-    // const handleRegister = e => {
-    //     e.preventDefault();
-    //     const form = new FormData(e.currentTarget);
+    const handleRegister = e => {
+        e.preventDefault();
+        const form = new FormData(e.currentTarget);
 
-    //     // const email = form.get('email');
-    //     const password = form.get('password');
-    //     // const name = form.get('name');
-    //     // const photo = form.get('photoURL');
-    //     // const role = 'user'
+        // const email = form.get('email');
+        const password = form.get('password');
+        // const name = form.get('name');
+        // const photo = form.get('photoURL');
+        // const role = 'user'
 
-    //     if (password.length < 6) {
-    //         Swal.fire({
-    //             title: 'Error!',
-    //             text: 'Password must be 6 characters or longer!',
-    //             icon: 'error',
-    //             confirmButtonText: 'Cool'
-    //         })
-    //         return;
-    //     }
-    //     else if (!/[A-Z]/.test(password)) {
-    //         Swal.fire({
-    //             title: 'Error!',
-    //             text: 'Password must be 6 characters or longer!',
-    //             icon: 'error',
-    //             confirmButtonText: 'Cool'
-    //         })
-    //         return;
-    //     }
+        if (password.length < 6) {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Password must be 6 characters or longer!',
+                icon: 'error',
+                confirmButtonText: 'Cool'
+            })
+            return;
+        }
+        else if (!/[A-Z]/.test(password)) {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Password must be 6 characters or longer!',
+                icon: 'error',
+                confirmButtonText: 'Cool'
+            })
+            return;
+        }
 
 
-    // }
-    // const handleGoogleRegister = e => {
-    //     e.preventDefault();
-    //     googleRegister();
-    //     navigate(location?.state ? location.state : '/')
+    }
+    const handleGoogleRegister = e => {
+        e.preventDefault();
+        googleRegister();
+       
 
-    // }
+    }
 
     return (
         <div className="mb-32 w-9/12 mx-auto">
@@ -101,7 +102,7 @@ const Register = () => {
                     </form>
                     <div className="flex justify-center items-center gap-5  w-1/2 mx-auto mt-6">
                         <p className="text-lg">Register with google</p>
-                        <button className="btn w-20 btn-ghost"><Image className="h-[25px]" src={image2} alt="" /></button>
+                        <button onClick={handleGoogleRegister} className="btn w-20 btn-ghost"><Image className="h-[25px]" src={image2} alt="" /></button>
                     </div>
                     <p className="text-center mt-5">Already have an account? <Link className="text-blue-900" href="/login">Login Here! </Link></p>
 

@@ -1,69 +1,30 @@
 "use client"
-import { useContext } from "react";
-// import { AuthContext } from "../../Provider/AuthProvider";
 import Image from "next/image";
-import image1 from "@/assets/loginpage.jpg"
-import image2 from "@/assets/google.svg";
+import image1 from "../../assets/loginpage.jpg"
+import image2 from "../../assets/google.svg";
 import Link from "next/link";
-import { Helmet } from "react-helmet-async";
-import { useRouter } from "next/router";
+import { signIn } from 'next-auth/react'
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
+
 
 
 
 
 const Login = () => {
 
-
-
-
-    // const { signIn, googleSignIn } = useContext(AuthContext)
-    // const location = useLocation();
-    // const navigate = useNavigate();
-
-    // const handleLogin = e => {
-    //     e.preventDefault();
-    //     console.log(e.currentTarget);
-    //     const form = new FormData(e.currentTarget);
-    //     const email = form.get('email')
-    //     const password = form.get('password');
-
-    //     signIn(email, password)
-    //         .then(result => {
-    //             console.log(result);
-    //             Swal.fire({
-    //                 title: 'Success!',
-    //                 text: 'Logged in successfully!',
-    //                 icon: 'success',
-    //                 confirmButtonText: 'Cool'
-    //             })
-    //             navigate(location?.state ? location.state : '/')
-    //         })
-    //         .catch(error => {
-    //             // toast.error(error.message);
-    //             console.log(error.message);
-    //             Swal.fire({
-    //                 title: 'Error!',
-    //                 text: error.message,
-    //                 icon: 'error',
-    //                 confirmButtonText: 'Cool'
-    //             })
-    //         })
-    // }
-
+    const { signIn, googleSignIn } = useContext(AuthContext)
+    
     const handleGoogleLogIn = e => {
         e.preventDefault();
         googleSignIn();
         console.log('Logged in successfully');
-
-
     }
 
     return (
         <div className="mb-28 w-9/12 mx-auto">
-
             <div className="flex justify-center  ">
                 <div className="w-1/2 mx-auto ">
-
                     <Image src={image1} alt="" height={600} width={600} />
                 </div>
                 <div className=" w-9/12 mt-20 mx-auto">
@@ -87,7 +48,7 @@ const Login = () => {
                     </form>
                     <div className="flex justify-center items-center gap-5  w-1/2 mx-auto mt-6">
                         <p className="text-lg">Login with google</p>
-                        <button className="btn w-20 btn-ghost"><Image className="h-[25px]" src={image2} alt="" /> </button>
+                        <button onClick={handleGoogleLogIn} className="btn w-20 btn-ghost"><Image className="h-[25px]" src={image2} alt="" /> </button>
                     </div>
                     <p className="text-center mt-5">Do not have an account? <Link className="text-blue-900" href="/register">Register Here! </Link></p>
                 </div>

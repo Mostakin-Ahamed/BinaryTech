@@ -3,13 +3,22 @@ const { default: Image } = require("next/image");
 
 import Link from 'next/link';
 import logo from '../../assets/Logo.png';
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../Provider/AuthProvider';
+
 
 const Navbar = () => {
 
+  const { user , logOut} = useContext(AuthContext)
+  const handleSignOut = () =>{
+    logOut()
+      .then()
+      .catch()
+  }
   return (
-    <div className='border-b-2 border-black'>
-      <div className="navbar  bg-blue-700">
+    
+    <div className=' sticky top-0 left-0 '>
+      <div className="navbar bg-opacity-90 bg-blue-700">
         <div className="flex-auto w-2/3 mx-auto ">
           <div className='w-1/2 mx-auto  flex justify-start items-center'>
             <Image src={logo} alt='logo.png' height={100} width={100} />
@@ -25,11 +34,13 @@ const Navbar = () => {
         </div>
 
         <div className="w-1/3 mx-auto flex justify-evenly mr-5  gap-2">
-          <div className='flex gap-14'>
+          <div className='flex gap-5'>
             <Link className="mx-3 text-white cursor-pointer" href='/'>Home</Link>
             <Link className="mx-3 text-white cursor-pointer" href='/myCart'>My Cart</Link>
             <Link className="mx-3 text-white cursor-pointer" href='/pcBuilder'>Pc Builder</Link>
-            <Link className="mx-3 text-white cursor-pointer" href='/login'>Login</Link>
+            {
+              user? <h3 className="text-bold text-white font-2xl mr-5">{user.displayName}</h3>:<Link className="mx-3 text-white cursor-pointer" href='/login'>Login</Link>
+            }
           </div>
           <div className="dropdown dropdown-end">
             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
@@ -45,7 +56,9 @@ const Navbar = () => {
                 </a>
               </li>
               <li><a>Dashboard</a></li>
-              <li><a>Logout</a></li>
+              {
+                user? <li><a onClick={handleSignOut}>Logout</a></li>: <></>
+              }
             </ul>
           </div>
         </div>
