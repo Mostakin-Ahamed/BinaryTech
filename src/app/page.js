@@ -15,6 +15,7 @@ import popular3 from '../assets/p3.png'
 import popular4 from '../assets/p4.png'
 import popular5 from '../assets/p5.png'
 import popular6 from '../assets/p6.png'
+import Link from "next/link";
 
 
 const HomePage = () => {
@@ -94,6 +95,7 @@ const HomePage = () => {
         <div className=" text-center mb-16 ">
           <p className="font-semibold  text-xl">Our <span className="text-blue-500"> Popular </span> Products</p>
           <p className="font-sans ">Get Your Desired Product From Popular Category! </p>
+          <button className="btn btn-primary"><Link className="mx-3 text-white cursor-pointer" href='/allProducts'>All Products</Link></button>
         </div>
       </div>
 

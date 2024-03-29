@@ -8,11 +8,11 @@
 
 
 import Image from "next/image";
-import image1 from "@/assets/registration.jpg"
+import image1 from "../../assets/registration.jpg"
 import Link from "next/link";
-import image2 from "@/assets/google.svg"
+import image2 from "../../assets/google.svg"
 import { useContext } from "react";
-import { AuthContext } from "@/Provider/AuthProvider";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 
 const Register = () => {

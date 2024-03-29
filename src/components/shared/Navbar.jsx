@@ -38,6 +38,7 @@ const Navbar = () => {
             <Link className="mx-3 text-white cursor-pointer" href='/'>Home</Link>
             <Link className="mx-3 text-white cursor-pointer" href='/myCart'>My Cart</Link>
             <Link className="mx-3 text-white cursor-pointer" href='/pcBuilder'>Pc Builder</Link>
+            
             {
               user? <h3 className="text-bold text-white font-2xl mr-5">{user.displayName}</h3>:<Link className="mx-3 text-white cursor-pointer" href='/login'>Login</Link>
             }
@@ -45,7 +46,9 @@ const Navbar = () => {
           <div className="dropdown dropdown-end">
             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
-                <Image alt="Tailwind CSS Navbar component" height={100} width={100} src={logo} />
+                {
+                  user? <Image alt="Tailwind CSS Navbar component" height={100} width={100} src={logo} /> :<Image alt="Tailwind CSS Navbar component" height={100} width={100} src={logo} />
+                }
               </div>
             </div>
             <ul tabIndex={0} className="text-black mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
