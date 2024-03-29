@@ -37,7 +37,7 @@ const HomePage = () => {
           <p className="font-sans ">Get Your Desired Product From Featured Category! </p>
         </div>
         <div className=" flex gap-2 justify-evenly  w-9/12 mx-auto ">
-          <div className="card relative popular w-2/12 bg-base-100 ">
+          <div className="card w-2/12 bg-base-100 ">
             <figure className="px-10 pt-10">
               <Image src={popular1} width={48} height={48} alt="feature.jpg"></Image>
             </figure>
@@ -45,7 +45,7 @@ const HomePage = () => {
               <h2 className="card-title">Home Appliances</h2>
             </div>
           </div>
-          <div className="card popular w-2/12 bg-base-100 ">
+          <div className="card  w-2/12 bg-base-100 ">
             <figure className="px-10 pt-10">
               <Image src={popular2} width={48} height={48} alt="feature.jpg"></Image>
             </figure>
@@ -53,7 +53,7 @@ const HomePage = () => {
               <h2 className="card-title">Laptop</h2>
             </div>
           </div>
-          <div className="card popular w-2/12 bg-base-100 ">
+          <div className="card w-2/12 bg-base-100 ">
             <figure className="px-10 pt-10">
               <Image src={popular3} width={48} height={48} alt="feature.jpg"></Image>
             </figure>
@@ -61,7 +61,7 @@ const HomePage = () => {
               <h2 className="card-title">TV</h2>
             </div>
           </div>
-          <div className="card popular w-2/12 bg-base-100 ">
+          <div className="card w-2/12 bg-base-100 ">
             <figure className="px-10 pt-10">
               <Image src={popular4} width={48} height={48} alt="feature.jpg"></Image>
             </figure>
@@ -69,7 +69,7 @@ const HomePage = () => {
               <h2 className="card-title">Mobile Phone</h2>
             </div>
           </div>
-          <div className="card popular w-2/12 bg-base-100  ">
+          <div className="card w-2/12 bg-base-100  ">
             <figure className="px-10 pt-10">
               <Image src={popular5} width={48} height={48} alt="feature.jpg"></Image>
             </figure>
@@ -77,7 +77,7 @@ const HomePage = () => {
               <h2 className="card-title">Headphone</h2>
             </div>
           </div>
-          <div className="card popular w-2/12 bg-base-100 ">
+          <div className="card w-2/12 bg-base-100 ">
             <figure className="px-10 pt-10">
               <Image src={popular6} width={48} height={48} alt="feature.jpg"></Image>
             </figure>
@@ -95,7 +95,7 @@ const HomePage = () => {
         <div className=" text-center mb-16 ">
           <p className="font-semibold  text-xl">Our <span className="text-blue-500"> Popular </span> Products</p>
           <p className="font-sans ">Get Your Desired Product From Popular Category! </p>
-          <button className="btn btn-primary"><Link className="mx-3 text-white cursor-pointer" href='/allProducts'>All Products</Link></button>
+          <button className="btn btn-primary"><Link className="mx-3 text-white cursor-pointer" href='/allProducts/CPU'>All Products</Link></button>
         </div>
       </div>
 
