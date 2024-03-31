@@ -6,9 +6,9 @@ import CategoryList from '../../components/ui/CategoryList/CategoryList';
 const ProductsLayout = ({children}) => {
     
     return (
-      <Box>
-        <Container>
-            <Grid container spacing={2}>
+      <Box >
+        <div className='w-10/12 mx-auto'>
+        <Grid container spacing={2}>
                 <Grid item xs ={2}>
                     <CategoryList></CategoryList>
                 </Grid>
@@ -16,7 +16,9 @@ const ProductsLayout = ({children}) => {
                     {children}
                 </Grid>
             </Grid>
-        </Container>
+        </div>
+            
+        
       </Box>  
     );
 };

@@ -3,8 +3,7 @@ import { getAllCategories } from '../../../utils/getAllCategories';
 import Link from 'next/link';
 
 const CategoryList = async () => {
-    const allCategories   = await getAllCategories()
-    console.log(allCategories);
+    const allCategories  = await getAllCategories()
     return (
         <Box className="mt-5">
             <div className='flex justify-center mb-5 '>
@@ -14,8 +13,8 @@ const CategoryList = async () => {
             <Stack rowGap={1} sx={{mt: 2.5}}>
                 {
                     allCategories.map(category =>(
-                        <Button variant='outlined' style={{ textAlign: 'left' }} key={category._id}>
-                            <Link href={category.title}>{category.title}</Link>
+                        <Button variant='outlined' key={category._id}>
+                            <Link href={`allProducts?category=${category.title.toLowerCase()}`}>{category.title.toUpperCase()}</Link>
                         </Button>
                     ))
                 }

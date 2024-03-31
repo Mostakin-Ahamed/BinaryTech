@@ -15,7 +15,7 @@ const AllProducts =  async() => {
             
             {
                 allProducts.map(product =>(
-                    <button key={product._id}>{product.name}</button>
+                    <button key={product._id}>{product.name.toUpperCase()}</button>
                 ))
             }
             

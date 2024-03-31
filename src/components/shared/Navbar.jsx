@@ -10,6 +10,7 @@ import { AuthContext } from '../../Provider/AuthProvider';
 const Navbar = () => {
 
   const { user , logOut} = useContext(AuthContext)
+  console.log(user);
   const handleSignOut = () =>{
     logOut()
       .then()
@@ -17,8 +18,8 @@ const Navbar = () => {
   }
   return (
     
-    <div className=' top-0 left-0 '>
-      <div className="navbar bg-opacity-90 bg-blue-700">
+    <div className=''>
+      <div className="navbar bg-blue-700">
         <div className="flex-auto w-2/3 mx-auto ">
           <div className='w-1/2 mx-auto  flex justify-start items-center'>
             <Image src={logo} alt='logo.png' height={100} width={100} />
@@ -47,7 +48,7 @@ const Navbar = () => {
             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
                 {
-                  user? <Image alt="Tailwind CSS Navbar component" height={100} width={100} src={logo} /> :<Image alt="Tailwind CSS Navbar component" height={100} width={100} src={logo} />
+                  user? <Image alt="Tailwind CSS Navbar component" height={130} width={130} src={user.photoURL} /> :<Image alt="Tailwind CSS Navbar component" height={100} width={100} src={logo} />
                 }
               </div>
             </div>

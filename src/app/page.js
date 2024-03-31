@@ -95,7 +95,7 @@ const HomePage = () => {
         <div className=" text-center mb-16 ">
           <p className="font-semibold  text-xl">Our <span className="text-blue-500"> Popular </span> Products</p>
           <p className="font-sans ">Get Your Desired Product From Popular Category! </p>
-          <button className="btn btn-primary"><Link className="mx-3 text-white cursor-pointer" href='/allProducts/CPU'>All Products</Link></button>
+          <button className="btn btn-primary"><Link className="mx-3 text-white cursor-pointer" href='/allProducts/allProducts?category=all%20products'>All Products</Link></button>
         </div>
       </div>
 
