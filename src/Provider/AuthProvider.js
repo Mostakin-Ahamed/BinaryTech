@@ -42,7 +42,6 @@ const AuthProvider = ({children}) => {
             unSubscribe();
         }
     },[])
-    //|| eikhane axiosPublic dependency add korte hobe server site bananor pore
     const signIn = (email , password)=>{
         setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)

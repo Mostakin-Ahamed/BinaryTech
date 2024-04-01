@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
     <AuthProvider>
       <html lang="en" data-theme="light">
         <body className={inter.className}>
-          <Navbar />
+          <Navbar></Navbar>
           <div className="min-h-screen">
           {children}
           </div>

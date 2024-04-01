@@ -1,24 +1,18 @@
 "use client"
-const { default: Image } = require("next/image");
+import Image from "next/image";
 
 import Link from 'next/link';
 import logo from '../../assets/Logo.png';
 import React, { useContext } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
 
-
 const Navbar = () => {
-
   const { user , logOut} = useContext(AuthContext)
-  console.log(user);
   const handleSignOut = () =>{
     logOut()
-      .then()
-      .catch()
   }
   return (
-    
-    <div className=''>
+    <div >
       <div className="navbar bg-blue-700">
         <div className="flex-auto w-2/3 mx-auto ">
           <div className='w-1/2 mx-auto  flex justify-start items-center'>
@@ -38,27 +32,21 @@ const Navbar = () => {
           <div className='flex gap-5'>
             <Link className="mx-3 text-white cursor-pointer" href='/'>Home</Link>
             <Link className="mx-3 text-white cursor-pointer" href='/myCart'>My Cart</Link>
-            <Link className="mx-3 text-white cursor-pointer" href='/pcBuilder'>Pc Builder</Link>
-            
             {
-              user? <h3 className="text-bold text-white font-2xl mr-5">{user.displayName}</h3>:<Link className="mx-3 text-white cursor-pointer" href='/login'>Login</Link>
+              user? <h3 className="text-bold text-white font-2xl mr-5">{user.displayName}</h3>:
+              <Link className="mx-3 text-white cursor-pointer ml-10" href='/login'>Login</Link>
             }
           </div>
           <div className="dropdown dropdown-end">
             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
                 {
-                  user? <Image alt="Tailwind CSS Navbar component" height={130} width={130} src={user.photoURL} /> :<Image alt="Tailwind CSS Navbar component" height={100} width={100} src={logo} />
+                  user? <Image alt="Tailwind CSS Navbar component" height={130} width={130} src={user.photoURL} /> :
+                  <Image alt="Tailwind CSS Navbar component" height={100} width={100} src={logo} />
                 }
               </div>
             </div>
             <ul tabIndex={0} className="text-black mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-              <li>
-                <a className="justify-between">
-                  Profile
-                  <span className="badge">New</span>
-                </a>
-              </li>
               <li><a>Dashboard</a></li>
               {
                 user? <li><a onClick={handleSignOut}>Logout</a></li>: <></>

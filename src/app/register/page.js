@@ -1,36 +1,27 @@
 "use client"
-// import { useContext } from "react";
-// import { useLocation, useNavigate } from "react-router-dom";
-// import { updateProfile } from "firebase/auth";
-// import Swal from "sweetalert2";
-// import { AuthContext } from "../../Provider/AuthProvider";
-
-
-
 import Image from "next/image";
 import image1 from "../../assets/registration.jpg"
 import Link from "next/link";
 import image2 from "../../assets/google.svg"
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
+import { updateProfile } from "firebase/auth";
 
 
 const Register = () => {
-
-
-    const { googleRegister } = useContext(AuthContext);
-    
-    
-
+    const { googleRegister, createUser, user } = useContext(AuthContext);
+    console.log(user);
     const handleRegister = e => {
         e.preventDefault();
         const form = new FormData(e.currentTarget);
-
-        // const email = form.get('email');
+        const email = form.get('email');
         const password = form.get('password');
-        // const name = form.get('name');
-        // const photo = form.get('photoURL');
-        // const role = 'user'
+        const name = form.get('name');
+        const photo = form.get('photoURL');
+        const role = 'user'
+        const userInfo = { email, role, name, photo }
+        
 
         if (password.length < 6) {
             Swal.fire({
@@ -51,27 +42,54 @@ const Register = () => {
             return;
         }
 
+        createUser(email, password)
+            .then(result => {
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(userInfo)
+
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.insertedId) {
+                            Swal.fire({
+                                title: 'Success!',
+                                text: 'User created successfully!',
+                                icon: 'success',
+                                confirmButtonText: 'Cool'
+                            })
+                            updateProfile(result.user, {
+                                displayName: name,
+                                photoURL: photo
+                            })
+                                .then(() => console.log("profile updated"))
+                                .catch()
+                        }
+                    })
+            })
 
     }
+
     const handleGoogleRegister = e => {
         e.preventDefault();
         googleRegister();
-       
+
 
     }
 
     return (
         <div className="mb-32 w-9/12 mx-auto">
-            
             <div className="flex  justify-center " >
                 <div className="flex  items-center  w-1/2 mx-auto">
-
                     <Image src={image1} alt="" width={600} height={600} />
                 </div>
                 <div className=" w-9/12 mt-10 mx-auto " >
-
                     <h2 className="text-3xl my-10 text-center">Please Register!</h2>
-                    <form className="w-1/2 lg:w-1/2 md:3/4 mx-auto">
+                    <form onSubmit={handleRegister} className="w-1/2 lg:w-1/2 md:3/4 mx-auto">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Name</span>

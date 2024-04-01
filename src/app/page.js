@@ -16,6 +16,8 @@ import popular4 from '../assets/p4.png'
 import popular5 from '../assets/p5.png'
 import popular6 from '../assets/p6.png'
 import Link from "next/link";
+import Popular from "../components/ui/PopularProducts/PopularProducts";
+import PopularProducts from "../components/ui/PopularProducts/PopularProducts";
 
 
 const HomePage = () => {
@@ -95,10 +97,24 @@ const HomePage = () => {
         <div className=" text-center mb-16 ">
           <p className="font-semibold  text-xl">Our <span className="text-blue-500"> Popular </span> Products</p>
           <p className="font-sans ">Get Your Desired Product From Popular Category! </p>
-          <button className="btn btn-primary"><Link className="mx-3 text-white cursor-pointer" href='/allProducts/allProducts?category=all%20products'>All Products</Link></button>
+          <PopularProducts></PopularProducts>
+          <button className="btn  btn-primary bg-blue-700"><Link className="mx-3 text-white cursor-pointer" href='/allProducts/allProducts?category=all%20products'>All Products</Link></button>
         </div>
       </div>
 
+      <div className="mb-16">
+        <div className=" text-center  mb-16 ">
+          <p className="font-semibold  text-2xl">OUR <span className="text-blue-500"> NEWSLETTER</span> </p>
+
+        </div>
+        <div className="text-center w-1/2 items-center mx-auto">
+          <h1 className="font-semibold text-4xl font-sans mb-5">Enjoy 10% off your first order when you join our mailing list.</h1>
+          <div className="flex justify-center items-center">
+            <input type="text" placeholder="Email address" className="input rounded-none input-bordered w-full max-w-xs" />
+            <button className="btn btn-success bg-blue-700 text-white rounded-none ">Success</button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

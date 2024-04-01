@@ -6,6 +6,8 @@ import Link from "next/link";
 import { signIn } from 'next-auth/react'
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
+import { redirect } from "next/navigation";
 
 
 
@@ -15,6 +17,37 @@ const Login = () => {
 
     const { signIn, googleSignIn } = useContext(AuthContext)
     
+
+    const handleLogin = e => {
+        e.preventDefault();
+        console.log(e.currentTarget);
+        const form = new FormData(e.currentTarget);
+        const email=form.get('email')
+        const password=form.get('password');
+
+        signIn(email, password)
+        .then(result =>{
+            Swal.fire({
+                title: 'Success!',
+                text: 'Logged in successfully!',
+                icon: 'success',
+                confirmButtonText: 'Cool'
+              })
+              redirect("")
+           
+        })
+        .catch(error=>{
+            // toast.error(error.message);
+            console.log(error.message);
+            Swal.fire({
+                title: 'Error!',
+                text: error.message,
+                icon: 'error',
+                confirmButtonText: 'Cool'
+              })
+        })
+    }
+
     const handleGoogleLogIn = e => {
         e.preventDefault();
         googleSignIn();
@@ -29,7 +62,7 @@ const Login = () => {
                 </div>
                 <div className=" w-9/12 mt-20 mx-auto">
                     <h2 className="text-3xl my-10 text-center">Please Login!</h2>
-                    <form className="w-1/2 lg:w-full md:3/4 mx-auto">
+                    <form onSubmit={handleLogin} className="w-1/2 lg:w-full md:3/4 mx-auto">
                         <div className="form-control w-1/2 mx-auto mt-6 flex justify-center">
                             <label className="label">
                                 <span className="label-text">Email</span>

@@ -1,9 +1,10 @@
+
 import { Box, Button, Divider, Stack, Typography } from '@mui/material';
 import { getAllCategories } from '../../../utils/getAllCategories';
 import Link from 'next/link';
 
 const CategoryList = async () => {
-    const allCategories  = await getAllCategories()
+    const allCategories = await getAllCategories()
     return (
         <Box className="mt-5">
             <div className='flex justify-center mb-5 '>

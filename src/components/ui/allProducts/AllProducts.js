@@ -11,7 +11,7 @@ const AllProducts =  async() => {
     };
 
     return (
-        <div className='w-9/12 mx-auto'>
+        <div className='w-10/12 mx-auto'>
             
             {
                 allProducts.map(product =>(
