@@ -1,14 +1,15 @@
-
+"use client"
 
 import React, { useContext } from 'react';
 import { getCart } from '../../../utils/getCart'
 import Image from 'next/image';
 import { AuthContext } from '../../../Provider/AuthProvider';
 
-const UserCart = async () => {
-    const carts = await getCart()
-    // const { user } = useContext(AuthContext)
-    // console.log(user);
+const UserCart =  ({carts}) => {
+    const { user} = useContext(AuthContext)
+    console.log(user);
+    
+    const filterData = carts.filter(cart => cart.userEmail === user?.email )
 
 
     return (
@@ -26,7 +27,7 @@ const UserCart = async () => {
                 </thead>
                 <tbody>
                     {
-                        carts.map((service, index) =>
+                        filterData.map((service, index) =>
                             <tr key={service._id}>
                                 <th>
                                     {index + 1}

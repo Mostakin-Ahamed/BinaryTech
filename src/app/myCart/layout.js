@@ -12,7 +12,7 @@ const layout = ({ children }) => {
             {
                 children
             }
-            <UserCart></UserCart>
+            
         </div>
     );
 };
