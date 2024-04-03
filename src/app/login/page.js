@@ -27,14 +27,15 @@ const Login = () => {
 
         signIn(email, password)
         .then(result =>{
+            console.log(result);
             Swal.fire({
                 title: 'Success!',
                 text: 'Logged in successfully!',
                 icon: 'success',
                 confirmButtonText: 'Cool'
+                
               })
-              redirect("")
-           
+              
         })
         .catch(error=>{
             // toast.error(error.message);

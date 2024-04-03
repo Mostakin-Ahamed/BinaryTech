@@ -27,8 +27,9 @@ const QuantityControl = ({ data }) => {
         data.totalPrice = totalPrice.toFixed(2)
         data.quantity = quantity
         data.userEmail = user.email
+        data.status = 'pending'
         
-        fetch('http://localhost:5000/addToCart', {
+        fetch('https://binary-tech-server.vercel.app/addToCart', {
 
             method: 'POST',
             headers: {

@@ -8,7 +8,7 @@ const PopularProducts = () => {
 
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        fetch("http://localhost:5000/popular")
+        fetch("https://binary-tech-server.vercel.app/popular")
             .then((res) => res.json())
             .then((data) => setProducts(data))
     }, [])

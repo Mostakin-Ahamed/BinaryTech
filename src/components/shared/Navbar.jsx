@@ -6,11 +6,18 @@ import logo from '../../assets/Logo.png';
 import React, { useContext } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
 
+
+
 const Navbar = () => {
   const { user , logOut} = useContext(AuthContext)
+  
+  
+
   const handleSignOut = () =>{
     logOut()
   }
+
+  
   return (
     <div >
       <div className="navbar bg-blue-700">
@@ -31,7 +38,10 @@ const Navbar = () => {
         <div className="w-1/3 mx-auto flex justify-evenly mr-5  gap-2">
           <div className='flex gap-5'>
             <Link className="mx-3 text-white cursor-pointer" href='/'>Home</Link>
-            <Link className="mx-3 text-white cursor-pointer" href='/myCart'>My Cart</Link>
+            {
+              user?.email ==='admin@gmail.com' ? <> <Link className="mx-3 text-white cursor-pointer" href='/addProduct'>Add product</Link> </> :<Link className="mx-3 text-white cursor-pointer" href='/myCart/myCart'>My Cart</Link>
+            }
+            
             {
               user? <h3 className="text-bold text-white font-2xl mr-5">{user.displayName}</h3>:
               <Link className="mx-3 text-white cursor-pointer ml-10" href='/login'>Login</Link>
@@ -47,7 +57,9 @@ const Navbar = () => {
               </div>
             </div>
             <ul tabIndex={0} className="text-black mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-              <li><a>Dashboard</a></li>
+              {
+                user?.email === 'admin@gmail.com' ? <li><Link className="text-left" href='/dashboard/dashboard' > Dashboard</Link></li>: <> </> 
+              }
               {
                 user? <li><a onClick={handleSignOut}>Logout</a></li>: <></>
               }

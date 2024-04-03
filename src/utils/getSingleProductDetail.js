@@ -1,4 +1,4 @@
 export const getSingleProductDetail = async( id) =>{
-    const res = await fetch (`http://localhost:5000/allProducts/${id}`, { cache: "no-store"})
+    const res = await fetch (`https://binary-tech-server.vercel.app/allProducts/${id}`, { cache: "no-store"})
     return res.json();
 }

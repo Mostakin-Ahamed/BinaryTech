@@ -1,4 +1,4 @@
 export const getAllCategories = async ()=>{
-    const res = await fetch("http://localhost:5000/category")
+    const res = await fetch("https://binary-tech-server.vercel.app/category")
     return res.json()
 }

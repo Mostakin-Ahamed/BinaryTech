@@ -16,7 +16,6 @@ import popular4 from '../assets/p4.png'
 import popular5 from '../assets/p5.png'
 import popular6 from '../assets/p6.png'
 import Link from "next/link";
-import Popular from "../components/ui/PopularProducts/PopularProducts";
 import PopularProducts from "../components/ui/PopularProducts/PopularProducts";
 
 
@@ -33,7 +32,10 @@ const HomePage = () => {
         <a><Image src={f3} width={300} height={150} alt="feature.jpg"></Image></a>
         <a><Image src={f4} width={300} height={150} alt="feature.jpg"></Image></a>
       </div>
-      <div className="mt-10">
+      <div className="w-9/12 mx-auto gap-4 mt-5 mb-3">
+        <hr className='border border-gray-400' />
+      </div>
+      <div className="mt-10 mb-10">
         <div className=" text-center mb-16 ">
           <p className="font-semibold  text-xl">Featured <span className="text-blue-500"> Category</span> </p>
           <p className="font-sans ">Get Your Desired Product From Featured Category! </p>
@@ -92,7 +94,11 @@ const HomePage = () => {
 
       {/* Our Popular products  section*/}
 
-      <div>
+      <div className="w-9/12 mx-auto  gap-4 mt-5 mb-3">
+        <hr className='border border-gray-400' />
+      </div>
+
+      <div className="mt-10">
         <hr></hr>
         <div className=" text-center mb-16 ">
           <p className="font-semibold  text-xl">Our <span className="text-blue-500"> Popular </span> Products</p>
@@ -100,6 +106,10 @@ const HomePage = () => {
           <PopularProducts></PopularProducts>
           <button className="btn  btn-primary bg-blue-700"><Link className="mx-3 text-white cursor-pointer" href='/allProducts/allProducts?category=all%20products'>All Products</Link></button>
         </div>
+      </div>
+
+      <div className="w-9/12 mx-auto gap-4 mt-5 mb-3">
+        <hr className='border border-gray-400' />
       </div>
 
       <div className="mb-16">

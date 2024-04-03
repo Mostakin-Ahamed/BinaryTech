@@ -9,8 +9,6 @@ import app from "../utils/firebase";
 // import useAxiosPublic from "../Hooks/useAxiosPublic.jsx";
 export const AuthContext = createContext(null)
 
-
-
 const auth = getAuth(app);
 
 // eslint-disable-next-line react/prop-types
