@@ -1,10 +1,7 @@
-"use client"
+import { Box, Grid } from '@mui/material';
 import React from 'react';
 
-import { Box, Grid } from '@mui/material';
-import AdminCart from '../../components/ui/AdminCart/AdminCart';
-
-const layout = ({ children }) => {
+const layout = () => {
     return (
         <Box >
             <div className='w-10/12 mx-auto'>
@@ -12,9 +9,7 @@ const layout = ({ children }) => {
                     <Grid item xs={2}>
                     </Grid>
                     <Grid item xs={12}>
-                        {
-                            <AdminCart></AdminCart>
-                        }
+                        <p>users control page</p>
                     </Grid>
                 </Grid>
             </div>

@@ -19,8 +19,8 @@ const Navbar = () => {
 
   
   return (
-    <div >
-      <div className="navbar bg-blue-700">
+    <div className=" bg-blue-700" >
+      <div className="navbar w-10/12 mx-auto">
         <div className="flex-auto w-2/3 mx-auto ">
           <div className='w-1/2 mx-auto  flex justify-start items-center'>
             <Image src={logo} alt='logo.png' height={100} width={100} />
@@ -39,7 +39,9 @@ const Navbar = () => {
           <div className='flex gap-5'>
             <Link className="mx-3 text-white cursor-pointer" href='/'>Home</Link>
             {
-              user?.email ==='admin@gmail.com' ? <> <Link className="mx-3 text-white cursor-pointer" href='/addProduct'>Add product</Link> </> :<Link className="mx-3 text-white cursor-pointer" href='/myCart/myCart'>My Cart</Link>
+              user? 
+                user?.email ==='admin@gmail.com' ? <> <Link className="mx-3 text-white cursor-pointer" href='/addProduct'>Add product</Link> </> :<Link className="mx-3 text-white cursor-pointer" href='/myCart/myCart'>My Cart</Link> : <></>
+              
             }
             
             {
@@ -60,6 +62,7 @@ const Navbar = () => {
               {
                 user?.email === 'admin@gmail.com' ? <li><Link className="text-left" href='/dashboard/dashboard' > Dashboard</Link></li>: <> </> 
               }
+              
               {
                 user? <li><a onClick={handleSignOut}>Logout</a></li>: <></>
               }

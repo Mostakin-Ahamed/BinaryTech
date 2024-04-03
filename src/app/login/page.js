@@ -8,6 +8,8 @@ import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { redirect } from "next/navigation";
+import { useRouter } from 'next/navigation';
+
 
 
 
@@ -16,6 +18,11 @@ import { redirect } from "next/navigation";
 const Login = () => {
 
     const { signIn, googleSignIn } = useContext(AuthContext)
+    const router = useRouter();
+    const handleNavigation = () => {
+
+        router.push('/');
+      };
     
 
     const handleLogin = e => {
@@ -34,7 +41,9 @@ const Login = () => {
                 icon: 'success',
                 confirmButtonText: 'Cool'
                 
+                
               })
+              router.push('/');
               
         })
         .catch(error=>{

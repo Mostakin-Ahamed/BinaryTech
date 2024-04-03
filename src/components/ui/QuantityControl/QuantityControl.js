@@ -43,7 +43,7 @@ const QuantityControl = ({ data }) => {
                 if (data.insertedId) {
                     Swal.fire({
                         title: 'Success!',
-                        text: 'Tour added to WishList!',
+                        text: 'Product added to Cart!',
                         icon: 'success',
                         confirmButtonText: 'Cool'
                     })

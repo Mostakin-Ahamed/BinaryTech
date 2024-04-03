@@ -1,11 +1,16 @@
+
+
 import React, { useContext } from 'react';
 import { getCart } from '../../../utils/getCart'
-import { AuthContext } from '../../../Provider/AuthProvider';
 import Image from 'next/image';
+import { AuthContext } from '../../../Provider/AuthProvider';
 
 const UserCart = async () => {
     const carts = await getCart()
-    
+    // const { user } = useContext(AuthContext)
+    // console.log(user);
+
+
     return (
         <div>
             <table className="table">
@@ -45,7 +50,11 @@ const UserCart = async () => {
                                 </td>
                                 <td>$ {service.totalPrice} </td>
                                 <th>
-                                    <h2 className="text-red-400">{service.status}</h2>
+                                    <div>
+                                        {
+                                            service?.status === "pending" ? <h2 className=" text-red-400">{service.status}</h2> : <h2 className=" text-green-400">{service.status}</h2>
+                                        }
+                                    </div>
                                 </th>
                             </tr>
                         )

@@ -16,9 +16,6 @@ const DynamicProductPage = async ({ searchParams }) => {
                 <h1 className="text-3xl font-semibold">Total <span className="text-blue-800">{searchParams.category.toUpperCase()}</span>: {products.length} </h1>
             </div>
             <div className="mt-10">
-                {/* <div className="grid grid-cols-3 ">
-                    
-                </div> */}
                 <AllProductCard products={products}></AllProductCard>
             </div>
             

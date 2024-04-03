@@ -1,15 +1,16 @@
 
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { getCart } from '../../../utils/getCart'
 import Image from 'next/image';
 import { FaRegTrashCan } from "react-icons/fa6";
 import Swal from 'sweetalert2';
 
 
+
 const AdminCart = async () => {
     const carts = await getCart()
 
-    
+
 
     const handleDelete = id => {
         Swal.fire({
@@ -21,40 +22,40 @@ const AdminCart = async () => {
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
-                if (result.isConfirmed) {
-                    fetch(`http://localhost:5000/wishlist/${id}`, {
-                        method: 'DELETE',
-                        headers: {
-                            'Content-Type': 'application/json'
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/wishlist/${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(res => {
+                        console.log(res);
+                        if (res.ok) {
+                            return res.json();
+                        }
+                        throw new Error('Network response was not ok.');
+                    })
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            // refetch();
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
                         }
                     })
-                        .then(res => {
-                            console.log(res);
-                            if (res.ok) {
-                                return res.json();
-                            }
-                            throw new Error('Network response was not ok.');
-                        })
-                        .then(data => {
-                            if (data.deletedCount > 0) {
-                                // refetch();
-                                Swal.fire({
-                                    title: "Deleted!",
-                                    text: "Your file has been deleted.",
-                                    icon: "success"
-                                });
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error deleting file:', error);
-                            Swal.fire({
-                                title: "Error!",
-                                text: "An error occurred while deleting the file.",
-                                icon: "error"
-                            });
+                    .catch(error => {
+                        console.error('Error deleting file:', error);
+                        Swal.fire({
+                            title: "Error!",
+                            text: "An error occurred while deleting the file.",
+                            icon: "error"
                         });
-                }
-            });
+                    });
+            }
+        });
     };
 
 
@@ -83,7 +84,7 @@ const AdminCart = async () => {
                 <tbody>
                     {
                         carts.map((service, index) =>
-                        
+
                             <tr key={service._id}>
                                 <th>
                                     {index + 1}
@@ -110,7 +111,31 @@ const AdminCart = async () => {
                                 </td>
                                 <td>$ {service.totalPrice} </td>
                                 <th>
-                                    <h2 className=" text-red-400">{service.status}</h2>
+                                    <div>
+                                        {
+                                            service?.status ==="pending"? <h2 className=" text-red-400">{service.status}</h2> : <h2 className=" text-green-400">{service.status}</h2>
+                                        }
+                                    </div>
+                                    <div>
+                                        <form >
+                                            <div className='flex justify-start'>
+                                                <div className="form-control">
+
+                                                    <select name="brandName" className="select select-bordered select-xs w-full max-w-xs">
+                                                        <option disabled selected>Select Status</option>
+                                                        
+                                                        <option className='text-red-400'>Pending</option>
+                                                        
+                                                        <option className='text-green-400'>Delivered</option>
+                                                    </select>
+                                                </div>
+                                                <div>
+                                                    <button className='btn btn-sm'> ok</button>
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                    </div>
                                 </th>
                                 <th>
                                     <button onClick={() => handleDelete(service._id)} className="btn btn-ghost btn-lg text-red-400">

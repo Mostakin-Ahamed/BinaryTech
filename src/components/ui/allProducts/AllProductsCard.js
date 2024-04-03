@@ -42,6 +42,7 @@ const AllProductsCard = ({ products }) => {
                                         <div className="card-body items-start text-center">
                 
                                             <h2 className="text-2xl"> {product.name}</h2>
+                                            <h2 className="text-sm bg-gray-500 rounded-md text-white py-1 px-1"> {product.category}</h2>
                                             <div className="flex w-9/12 justify-between">
                                                 <div className="">
                                                     <h2 className="text-lg text-gray-700">Price <span className="text-xl font-semibold text-orange-600"> $: {product.price}</span> </h2>
