@@ -203,7 +203,7 @@ const AdminCart = async () => {
                                 <th>
                                     <div className='flex justify-center text-lg mb-2'>
                                         {
-                                            service?.status ==="pending"? <h2 className=" text-red-400">{service.status}</h2> : <h2 className=" text-green-400">{service.status}</h2>
+                                            service?.status ==="Pending"? <h2 className=" text-red-400">{service.status}</h2> : <h2 className=" text-green-400">{service.status}</h2>
                                         }
                                     </div>
                                     <div className=''>

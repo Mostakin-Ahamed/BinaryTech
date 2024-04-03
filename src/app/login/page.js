@@ -60,6 +60,7 @@ const Login = () => {
     const handleGoogleLogIn = e => {
         e.preventDefault();
         googleSignIn();
+        router.push('/');
         console.log('Logged in successfully');
     }
 
