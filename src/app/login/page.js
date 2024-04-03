@@ -7,7 +7,6 @@ import { signIn } from 'next-auth/react'
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
-import { redirect } from "next/navigation";
 import { useRouter } from 'next/navigation';
 
 

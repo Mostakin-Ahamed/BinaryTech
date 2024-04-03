@@ -7,7 +7,7 @@ import { AuthContext } from '../../../Provider/AuthProvider';
 
 const UserCart =  ({carts}) => {
     const { user} = useContext(AuthContext)
-    console.log(user);
+    
     
     const filterData = carts.filter(cart => cart.userEmail === user?.email )
 

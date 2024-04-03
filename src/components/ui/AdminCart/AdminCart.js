@@ -41,7 +41,7 @@ const AdminCart = async () => {
                             // refetch();
                             Swal.fire({
                                 title: "Deleted!",
-                                text: "Your file has been deleted.",
+                                text: "Your file has been updated.",
                                 icon: "success"
                             });
                         }
@@ -50,7 +50,97 @@ const AdminCart = async () => {
                         console.error('Error deleting file:', error);
                         Swal.fire({
                             title: "Error!",
-                            text: "An error occurred while deleting the file.",
+                            text: "An error occurred while updating the file.",
+                            icon: "error"
+                        });
+                    });
+            }
+        });
+    };
+    const handleDelivered = id => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, change it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/adminCart/delivered/${id}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(res => {
+                        console.log(res);
+                        if (res.ok) {
+                            return res.json();
+                        }
+                        throw new Error('Network response was not ok.');
+                    })
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            // refetch();
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been updated.",
+                                icon: "success"
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error deleting file:', error);
+                        Swal.fire({
+                            title: "Error!",
+                            text: "An error occurred while updating the file.",
+                            icon: "error"
+                        });
+                    });
+            }
+        });
+    };
+    const handlePending = id => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/adminCart/pending/${id}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(res => {
+                        console.log(res);
+                        if (res.ok) {
+                            return res.json();
+                        }
+                        throw new Error('Network response was not ok.');
+                    })
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            // refetch();
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been updated.",
+                                icon: "success"
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error deleting file:', error);
+                        Swal.fire({
+                            title: "Error!",
+                            text: "An error occurred while updating the file.",
                             icon: "error"
                         });
                     });
@@ -111,29 +201,17 @@ const AdminCart = async () => {
                                 </td>
                                 <td>$ {service.totalPrice} </td>
                                 <th>
-                                    <div>
+                                    <div className='flex justify-center text-lg mb-2'>
                                         {
                                             service?.status ==="pending"? <h2 className=" text-red-400">{service.status}</h2> : <h2 className=" text-green-400">{service.status}</h2>
                                         }
                                     </div>
-                                    <div>
-                                        <form >
-                                            <div className='flex justify-start'>
-                                                <div className="form-control">
-
-                                                    <select name="brandName" className="select select-bordered select-xs w-full max-w-xs">
-                                                        <option disabled selected>Select Status</option>
-                                                        
-                                                        <option className='text-red-400'>Pending</option>
-                                                        
-                                                        <option className='text-green-400'>Delivered</option>
-                                                    </select>
-                                                </div>
-                                                <div>
-                                                    <button className='btn btn-sm'> ok</button>
-                                                </div>
-                                            </div>
-                                        </form>
+                                    <div className=''>
+                                        <h1 className='text-center'>Change Status</h1>
+                                        <div className='  flex justify-evenly'>
+                                            <button onClick={()=> handlePending(service._id)} className='btn btn-xs btn-ghost py-1 bg-red-400'>Pending</button>
+                                            <button onClick={()=> handleDelivered(service._id)} className='btn btn-xs btn-ghost bg-green-400'>Delivered</button>
+                                        </div>
 
                                     </div>
                                 </th>
